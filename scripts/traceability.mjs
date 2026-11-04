@@ -12,7 +12,14 @@ const walk = (dir) =>
   });
 
 const reqs = new Map();
-for (const f of walk(join(root, 'openspec/changes/mvp/specs')).filter((f) => f.endsWith('spec.md'))) {
+// Main specs plus the specs of any active (non-archived) change.
+const specDirs = [join(root, 'openspec/specs')];
+const changesDir = join(root, 'openspec/changes');
+for (const c of readdirSync(changesDir)) {
+  if (c !== 'archive' && statSync(join(changesDir, c)).isDirectory()) specDirs.push(join(changesDir, c, 'specs'));
+}
+const specFiles = specDirs.flatMap((d) => walk(d)).filter((f) => f.endsWith('spec.md'));
+for (const f of specFiles) {
   const text = readFileSync(f, 'utf8');
   const blocks = text.split(/^### Requirement: /m).slice(1);
   for (const b of blocks) {

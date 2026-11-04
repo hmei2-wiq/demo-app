@@ -1,4 +1,5 @@
 import React from 'react';
+import { View, useWindowDimensions } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -11,6 +12,7 @@ import { ListsScreen, ListDetailScreen } from './src/screens/ListsScreen';
 import { CartScreen } from './src/screens/CartScreen';
 import { OrdersScreen } from './src/screens/OrdersScreen';
 import { colors } from './src/theme';
+import { contentWidth, navPosition } from './src/lib/layout';
 
 const Tabs = createBottomTabNavigator();
 const ShopStack = createNativeStackNavigator();
@@ -36,8 +38,17 @@ function ListsNav() {
 
 function Root() {
   const { cartCount } = useStore();
+  const { width } = useWindowDimensions();
+  // @FR-DSK-02 side navigation from the regular breakpoint up; bottom tabs on phones
+  const position = navPosition(width);
   return (
-    <Tabs.Navigator screenOptions={{ tabBarActiveTintColor: colors.leaf }}>
+    <Tabs.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: colors.leaf,
+        tabBarPosition: position,
+        tabBarLabelPosition: position === 'left' ? 'below-icon' : undefined,
+      }}
+    >
       <Tabs.Screen name="Shop" component={ShopNav} options={{ headerShown: false }} />
       <Tabs.Screen name="Lists" component={ListsNav} options={{ headerShown: false }} />
       <Tabs.Screen
@@ -51,11 +62,17 @@ function Root() {
 }
 
 export default function App() {
+  const { width } = useWindowDimensions();
   return (
     <SafeAreaProvider>
       <StoreProvider>
         <NavigationContainer>
-          <Root />
+          {/* @FR-DSK-04 centred content column, capped at 1200 */}
+          <View style={{ flex: 1, alignItems: 'center', backgroundColor: colors.cream }}>
+            <View style={{ flex: 1, width: contentWidth(width) }}>
+              <Root />
+            </View>
+          </View>
           <StatusBar style="dark" />
         </NavigationContainer>
       </StoreProvider>

@@ -122,14 +122,18 @@ function readBody(req) {
 }
 
 function send(res, status, body) {
-  const text = JSON.stringify(body);
-  res.writeHead(status, {
-    'content-type': 'application/json; charset=utf-8',
+  const cors = {
     'access-control-allow-origin': '*',
     'access-control-allow-headers': 'content-type',
     'access-control-allow-methods': 'GET,POST,OPTIONS',
-  });
-  res.end(text);
+  };
+  // @FR-DSK-05 a 204 must carry no body.
+  if (status === 204) {
+    res.writeHead(204, cors);
+    return res.end();
+  }
+  res.writeHead(status, { 'content-type': 'application/json; charset=utf-8', ...cors });
+  res.end(JSON.stringify(body));
 }
 
 export function createServer({ now = () => new Date(), catalog = loadCatalog() } = {}) {

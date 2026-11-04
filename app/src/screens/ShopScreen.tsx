@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { FlatList, Pressable, ScrollView, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
+import { gridColumns } from '../lib/layout';
 import { api } from '../api';
 import { Banner } from '../components/ui';
 import { ProductRow } from '../components/ProductRow';
@@ -11,6 +12,8 @@ const SPECIALS = '__specials__';
 
 export function ShopScreen({ navigation }: { navigation: any }) {
   const { categories, add, ready, loadError, reload } = useStore();
+  const { width } = useWindowDimensions();
+  const columns = gridColumns(width); // @FR-DSK-03
   const [query, setQuery] = useState('');
   const [selected, setSelected] = useState<string | null>(null);
   const [items, setItems] = useState<Product[]>([]);
@@ -69,10 +72,15 @@ export function ShopScreen({ navigation }: { navigation: any }) {
       {loadError ? <Banner message={loadError} onRetry={reload} /> : null}
       {error ? <Banner message={error} /> : null}
       <FlatList
+        key={`cols-${columns}`} // FlatList cannot change numColumns without a new key
+        numColumns={columns}
+        columnWrapperStyle={columns > 1 ? { gap: 12, paddingHorizontal: 16 } : undefined}
         data={items}
         keyExtractor={(p) => p.id}
         renderItem={({ item }) => (
-          <ProductRow product={item} onOpen={() => navigation.navigate('Detail', { id: item.id })} onAdd={() => add(item.id)} />
+          <View style={columns > 1 ? { flex: 1 / columns } : undefined}>
+            <ProductRow product={item} onOpen={() => navigation.navigate('Detail', { id: item.id })} onAdd={() => add(item.id)} />
+          </View>
         )}
         ListEmptyComponent={!loading && !loadError ? <Text style={styles.empty}>No products found.</Text> : null}
       />

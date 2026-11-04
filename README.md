@@ -10,11 +10,11 @@ An original grocery shopping app (React Native / Expo) with a small zero-depende
 |---|---|
 | `api/` | HTTP API: catalogue, pricing quote, slots, orders. Tests run with `npm test`. |
 | `app/` | Expo app: Shop, Lists, Cart, Orders. |
-| `openspec/changes/mvp/` | The spec (18 requirements), design and task list. |
+| `openspec/specs/` | The current spec (24 requirements). Changes live in `openspec/changes/`. |
 | `docs/context/` | Wedge, tech stack, architecture, UX notes, build ledger. |
 | `scripts/traceability.mjs` | Checks every requirement has a tagged test. |
 
-See `docs/RUN.md` to run it.
+Runs on iOS, Android and desktop web (`npm run web`). See `docs/RUN.md` to run it.
 
 ## Status
 

@@ -32,3 +32,14 @@ JSON `{ "error": "message", "code": "SNAKE_CASE" }` with 400, 404 or 413.
 
 ## Security notes (preview)
 Body limit 100 KB; all input validated; no secrets; CORS open for local dev only.
+
+## Desktop web (iter-1)
+The same Expo app runs in a desktop browser through react-native-web (`npm run web` in `app/`). Layout rules are in one pure module, `app/src/lib/layout.ts`:
+
+| Width | Class | Navigation | Product columns |
+|---|---|---|---|
+| under 768 | compact | bottom tabs | 1 |
+| 768 to 1099 | regular | left side | 2 |
+| 1100 and up | wide | left side | 3 |
+
+Content is centred and capped at 1200 points. The API answers browser CORS preflight with an empty 204.

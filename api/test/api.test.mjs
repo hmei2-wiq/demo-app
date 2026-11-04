@@ -166,6 +166,19 @@ test('@FR-CHK-04 › Newest first', async () => {
   assert.equal(list[1].id, a.id);
 });
 
+// ---- desktop web ----
+test('@FR-DSK-05 › Preflight', async () => {
+  const res = await fetch(base + '/api/orders', {
+    method: 'OPTIONS',
+    headers: { origin: 'http://localhost:8081', 'access-control-request-method': 'POST' },
+  });
+  assert.equal(res.status, 204);
+  assert.equal(await res.text(), '');
+  const methods = res.headers.get('access-control-allow-methods') ?? '';
+  for (const m of ['GET', 'POST', 'OPTIONS']) assert.ok(methods.includes(m), m);
+  assert.match(res.headers.get('access-control-allow-headers') ?? '', /content-type/i);
+});
+
 // ---- quality ----
 test('@NFR-SEC-01 › Oversized body', async () => {
   const big = JSON.stringify({ items: [], pad: 'x'.repeat(150 * 1024) });

@@ -7,13 +7,36 @@
   "wedge_sentence": "FreshCart lets a busy household rebuild its weekly grocery shop in under two minutes by reordering a past basket or a saved list, then booking a pickup or delivery slot.",
   "scale_tier": "preview",
   "product_type": "saas",
-  "active_change": "mvp",
-  "archived_changes": [],
+  "active_change": null,
+  "archived_changes": [
+    {
+      "name": "mvp",
+      "archived": "2026-11-04",
+      "method": "manual (copied deltas into openspec/specs, moved folder); NOT run through openspec archive"
+    },
+    {
+      "name": "iter-1-desktop-web",
+      "archived": "2026-11-04",
+      "method": "manual; NOT run through openspec archive"
+    }
+  ],
   "context": {
-    "wedge": { "file": "docs/context/wedge.md", "status": "LOCKED" },
-    "tech-stack": { "file": "docs/context/tech-stack.md", "status": "DRAFT" },
-    "architecture": { "file": "docs/context/architecture.md", "status": "DRAFT" },
-    "ux-design": { "file": "docs/context/ux-design.md", "status": "DRAFT" }
+    "wedge": {
+      "file": "docs/context/wedge.md",
+      "status": "LOCKED"
+    },
+    "tech-stack": {
+      "file": "docs/context/tech-stack.md",
+      "status": "DRAFT"
+    },
+    "architecture": {
+      "file": "docs/context/architecture.md",
+      "status": "DRAFT"
+    },
+    "ux-design": {
+      "file": "docs/context/ux-design.md",
+      "status": "DRAFT"
+    }
   },
   "phase_status": {
     "bootstrap": "done (OpenSpec CLI not run; config written by hand)",
@@ -35,25 +58,60 @@
     "security-auditor": "skipped",
     "dogfood-tester": "skipped (app cannot be run)",
     "pricing/positioning/landing/legal": "skipped (preview tier, no launch)",
-    "analytics-engineer": "skipped"
+    "analytics-engineer": "skipped",
+    "iter-1-market-reanalysis": "skipped (focus was narrow; no web research)",
+    "iter-1-implementation": "done: tasks 1.1, 2.1, 2.3, 3.1 ticked; 2.2 unticked (web UI never run)"
   },
   "gates": {
-    "api-tests": "pass: 23/23 (node --test)",
-    "logic-tests": "pass: 11/11 (node --test, type stripping)",
-    "traceability-static": "pass: 15/15 Must requirements have a tagged test (static scan, scripts/traceability.mjs)",
+    "api-tests": "pass: 24/24 (node --test)",
+    "logic-tests": "pass: 17/17 (node --test, type stripping)",
+    "traceability-static": "pass: 19/19 Must requirements (24 total) have a tagged test (static scan)",
     "openspec-validate-strict": "NOT RUN (CLI unavailable)",
     "openspec-archive": "NOT RUN (CLI unavailable)",
     "jest-ui-tests": "NOT RUN (no npm install)",
     "typecheck": "NOT RUN (no npm install)",
     "expo-app-start": "NOT RUN",
     "security-review": "NOT RUN",
-    "accessibility-nfr": "test written, NOT RUN"
+    "accessibility-nfr": "test written, NOT RUN",
+    "web-build": "NOT RUN (no npm install; react-native-web versions and tabBarPosition option unverified)"
   },
   "decisions": [
-    { "date": "2026-11-04", "phase": "bootstrap", "decision": "Original FreshCart brand, not Woolworths", "reason": "Avoid imitating a real retailer's brand" },
-    { "date": "2026-11-04", "phase": "bootstrap", "decision": "Proceed unverified", "reason": "npm registry unreachable from the build session; user chose to continue" },
-    { "date": "2026-11-04", "phase": "stack", "decision": "Zero-dependency Node API", "reason": "Lets tests run without a package registry" },
-    { "date": "2026-11-04", "phase": "checkpoint-1", "decision": "Wedge and spec approved", "reason": "User approved" }
+    {
+      "date": "2026-11-04",
+      "phase": "bootstrap",
+      "decision": "Original FreshCart brand, not Woolworths",
+      "reason": "Avoid imitating a real retailer's brand"
+    },
+    {
+      "date": "2026-11-04",
+      "phase": "bootstrap",
+      "decision": "Proceed unverified",
+      "reason": "npm registry unreachable from the build session; user chose to continue"
+    },
+    {
+      "date": "2026-11-04",
+      "phase": "stack",
+      "decision": "Zero-dependency Node API",
+      "reason": "Lets tests run without a package registry"
+    },
+    {
+      "date": "2026-11-04",
+      "phase": "checkpoint-1",
+      "decision": "Wedge and spec approved",
+      "reason": "User approved"
+    },
+    {
+      "date": "2026-11-04",
+      "phase": "iterate",
+      "decision": "iter-1: desktop web via react-native-web, not an Electron app",
+      "reason": "User chose desktop web"
+    },
+    {
+      "date": "2026-11-04",
+      "phase": "iterate",
+      "decision": "Archived mvp and iter-1 by hand",
+      "reason": "OpenSpec CLI unavailable; user approved manual archive"
+    }
   ],
   "open_issues": [
     "Run npm install in app/ and run jest, typecheck and the Expo app",
@@ -61,7 +119,9 @@
     "Wedge not checked against live market research",
     "No Figma UX design",
     "Slot times use server local time zone",
-    "Orders are in memory only"
+    "Orders are in memory only",
+    "Run npm run web and check side nav, 3-column grid and content cap in a real browser",
+    "Task 2.2 in archived iter-1 is unticked until the web UI is run"
   ],
   "local_quickstart": "(cd api && npm start &) && cd app && npm install && npm run start"
 }

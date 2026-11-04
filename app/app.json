@@ -6,6 +6,7 @@
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "ios": { "supportsTablet": false, "bundleIdentifier": "com.example.freshcart" },
-    "android": { "package": "com.example.freshcart" }
+    "android": { "package": "com.example.freshcart" },
+    "web": { "bundler": "metro", "output": "single", "name": "FreshCart" }
   }
 }
