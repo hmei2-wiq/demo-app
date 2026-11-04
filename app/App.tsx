@@ -46,7 +46,8 @@ function Root() {
       screenOptions={{
         tabBarActiveTintColor: colors.leaf,
         tabBarPosition: position,
-        tabBarLabelPosition: position === 'left' ? 'below-icon' : undefined,
+        // The uikit variant only supports top/bottom; the material variant is the sidebar layout.
+        tabBarVariant: position === 'left' ? 'material' : 'uikit',
       }}
     >
       <Tabs.Screen name="Shop" component={ShopNav} options={{ headerShown: false }} />
