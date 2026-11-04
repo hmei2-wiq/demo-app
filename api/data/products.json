@@ -1,0 +1,42 @@
+{
+  "categories": [
+    { "id": "fruit-veg", "name": "Fruit & Veg" },
+    { "id": "dairy", "name": "Dairy & Eggs" },
+    { "id": "bakery", "name": "Bakery" },
+    { "id": "meat", "name": "Meat & Seafood" },
+    { "id": "pantry", "name": "Pantry" },
+    { "id": "drinks", "name": "Drinks" },
+    { "id": "frozen", "name": "Frozen" },
+    { "id": "household", "name": "Household" }
+  ],
+  "products": [
+    { "id": "p-banana", "name": "Bananas", "size": "per kg", "category": "fruit-veg", "priceCents": 399 },
+    { "id": "p-apple", "name": "Pink Lady Apples", "size": "per kg", "category": "fruit-veg", "priceCents": 699, "wasCents": 799 },
+    { "id": "p-carrot", "name": "Carrots", "size": "1 kg bag", "category": "fruit-veg", "priceCents": 249 },
+    { "id": "p-tomato", "name": "Truss Tomatoes", "size": "per kg", "category": "fruit-veg", "priceCents": 799 },
+    { "id": "p-milk", "name": "Full Cream Milk", "size": "2 L", "category": "dairy", "priceCents": 330 },
+    { "id": "p-milk-lite", "name": "Lite Milk", "size": "2 L", "category": "dairy", "priceCents": 320 },
+    { "id": "p-eggs", "name": "Free Range Eggs", "size": "12 pack", "category": "dairy", "priceCents": 650, "wasCents": 720 },
+    { "id": "p-cheese", "name": "Tasty Cheese Block", "size": "500 g", "category": "dairy", "priceCents": 820 },
+    { "id": "p-yoghurt", "name": "Natural Yoghurt", "size": "1 kg", "category": "dairy", "priceCents": 480 },
+    { "id": "p-bread", "name": "Wholemeal Sandwich Loaf", "size": "700 g", "category": "bakery", "priceCents": 380 },
+    { "id": "p-rolls", "name": "Soft White Rolls", "size": "6 pack", "category": "bakery", "priceCents": 320, "wasCents": 380 },
+    { "id": "p-chicken", "name": "Chicken Breast Fillets", "size": "per kg", "category": "meat", "priceCents": 1000 },
+    { "id": "p-mince", "name": "Beef Mince", "size": "500 g", "category": "meat", "priceCents": 780, "wasCents": 900 },
+    { "id": "p-salmon", "name": "Atlantic Salmon Fillets", "size": "300 g", "category": "meat", "priceCents": 1200 },
+    { "id": "p-pasta", "name": "Spaghetti", "size": "500 g", "category": "pantry", "priceCents": 180 },
+    { "id": "p-rice", "name": "Basmati Rice", "size": "1 kg", "category": "pantry", "priceCents": 399 },
+    { "id": "p-oats", "name": "Rolled Oats", "size": "1 kg", "category": "pantry", "priceCents": 420 },
+    { "id": "p-sauce", "name": "Tomato Pasta Sauce", "size": "500 g", "category": "pantry", "priceCents": 290, "wasCents": 350 },
+    { "id": "p-oil", "name": "Olive Oil", "size": "750 mL", "category": "pantry", "priceCents": 1100 },
+    { "id": "p-coffee", "name": "Ground Coffee", "size": "200 g", "category": "drinks", "priceCents": 850 },
+    { "id": "p-tea", "name": "Black Tea Bags", "size": "100 pack", "category": "drinks", "priceCents": 450 },
+    { "id": "p-juice", "name": "Orange Juice", "size": "2 L", "category": "drinks", "priceCents": 520, "wasCents": 600 },
+    { "id": "p-water", "name": "Spring Water", "size": "24 x 600 mL", "category": "drinks", "priceCents": 1000 },
+    { "id": "p-peas", "name": "Frozen Peas", "size": "1 kg", "category": "frozen", "priceCents": 380 },
+    { "id": "p-icecream", "name": "Vanilla Ice Cream", "size": "2 L", "category": "frozen", "priceCents": 650 },
+    { "id": "p-tissues", "name": "Facial Tissues", "size": "3 x 200", "category": "household", "priceCents": 399 },
+    { "id": "p-dish", "name": "Dishwashing Liquid", "size": "900 mL", "category": "household", "priceCents": 450 },
+    { "id": "p-towel", "name": "Paper Towel", "size": "4 rolls", "category": "household", "priceCents": 650 }
+  ]
+}

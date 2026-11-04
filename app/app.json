@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "FreshCart",
+    "slug": "freshcart",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": { "supportsTablet": false, "bundleIdentifier": "com.example.freshcart" },
+    "android": { "package": "com.example.freshcart" }
+  }
+}

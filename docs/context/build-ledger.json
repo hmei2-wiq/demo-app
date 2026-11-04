@@ -1,0 +1,67 @@
+{
+  "schema_version": 3,
+  "product": "FreshCart",
+  "note": "Stored as a repo file because this session built unverified without the artifact flow; the Build Ledger artifact was not published.",
+  "started_at": "2026-11-04T08:39:00Z",
+  "product_idea": "A mobile grocery shopping app (original brand, not Woolworths-branded)",
+  "wedge_sentence": "FreshCart lets a busy household rebuild its weekly grocery shop in under two minutes by reordering a past basket or a saved list, then booking a pickup or delivery slot.",
+  "scale_tier": "preview",
+  "product_type": "saas",
+  "active_change": "mvp",
+  "archived_changes": [],
+  "context": {
+    "wedge": { "file": "docs/context/wedge.md", "status": "LOCKED" },
+    "tech-stack": { "file": "docs/context/tech-stack.md", "status": "DRAFT" },
+    "architecture": { "file": "docs/context/architecture.md", "status": "DRAFT" },
+    "ux-design": { "file": "docs/context/ux-design.md", "status": "DRAFT" }
+  },
+  "phase_status": {
+    "bootstrap": "done (OpenSpec CLI not run; config written by hand)",
+    "market-analysis": "skipped (no web research run)",
+    "wedge": "done, approved at checkpoint 1",
+    "stack-selector": "done",
+    "product-planner": "done (as proposal.md)",
+    "requirements-analyst": "done, NOT validated with openspec validate",
+    "system-designer": "done",
+    "ux-designer": "skipped (no Figma session); text spec only",
+    "auth-engineer": "skipped (no auth in preview)",
+    "database-migrator": "skipped (seed JSON, no database)",
+    "backend-developer": "done",
+    "frontend-developer": "done, never run",
+    "api-documenter": "skipped (no openapi.yaml; endpoints listed in architecture.md)",
+    "e2e-tester": "skipped",
+    "quality-gates": "partial",
+    "adversarial-tester": "skipped",
+    "security-auditor": "skipped",
+    "dogfood-tester": "skipped (app cannot be run)",
+    "pricing/positioning/landing/legal": "skipped (preview tier, no launch)",
+    "analytics-engineer": "skipped"
+  },
+  "gates": {
+    "api-tests": "pass: 23/23 (node --test)",
+    "logic-tests": "pass: 11/11 (node --test, type stripping)",
+    "traceability-static": "pass: 15/15 Must requirements have a tagged test (static scan, scripts/traceability.mjs)",
+    "openspec-validate-strict": "NOT RUN (CLI unavailable)",
+    "openspec-archive": "NOT RUN (CLI unavailable)",
+    "jest-ui-tests": "NOT RUN (no npm install)",
+    "typecheck": "NOT RUN (no npm install)",
+    "expo-app-start": "NOT RUN",
+    "security-review": "NOT RUN",
+    "accessibility-nfr": "test written, NOT RUN"
+  },
+  "decisions": [
+    { "date": "2026-11-04", "phase": "bootstrap", "decision": "Original FreshCart brand, not Woolworths", "reason": "Avoid imitating a real retailer's brand" },
+    { "date": "2026-11-04", "phase": "bootstrap", "decision": "Proceed unverified", "reason": "npm registry unreachable from the build session; user chose to continue" },
+    { "date": "2026-11-04", "phase": "stack", "decision": "Zero-dependency Node API", "reason": "Lets tests run without a package registry" },
+    { "date": "2026-11-04", "phase": "checkpoint-1", "decision": "Wedge and spec approved", "reason": "User approved" }
+  ],
+  "open_issues": [
+    "Run npm install in app/ and run jest, typecheck and the Expo app",
+    "Run openspec validate --strict and archive once the CLI is available",
+    "Wedge not checked against live market research",
+    "No Figma UX design",
+    "Slot times use server local time zone",
+    "Orders are in memory only"
+  ],
+  "local_quickstart": "(cd api && npm start &) && cd app && npm install && npm run start"
+}

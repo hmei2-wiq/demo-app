@@ -1,0 +1,22 @@
+schema: spec-driven
+context: |
+  Binding principles live in docs/context/ (wedge, tech-stack, architecture, ux-design)
+  and are indexed by the Build Ledger. One fact, one home: link, never copy.
+rules:
+  proposal:
+    - Quote the wedge sentence under Why; out-of-wedge work goes under Non-goals.
+    - "Stories under What Changes, one line each: 'US-AREA-NN (M|S|C · wedge) As a persona, I want ... so that ...'; no acceptance criteria."
+  specs:
+    - "Header is 'ID short name' with FR-AREA-NN or NFR-CAT-NN IDs."
+    - "Line after the description: 'Priority: M|S|C · Wedge: critical|supporting|v2'."
+    - "Unknowns: append [NEEDS CLARIFICATION: OQ-NN] and add OQ-NN to design.md Open Questions."
+    - Every NFR scenario states a number and a measurement condition.
+  design:
+    - Reference the architecture doc; do not re-pick vendors from the tech-stack doc.
+  tasks:
+    - "Each task: '- [ ] X.Y [owner] description — implements: IDs — verify: check'."
+operations:
+  archive:
+    guidance:
+      - Publish the traceability report into the change's reports before archiving.
+      - Never edit openspec/changes/archive/ afterwards.
